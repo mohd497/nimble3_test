@@ -1,0 +1,2 @@
+module Interface::FrontPageHelper
+end

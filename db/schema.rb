@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103072541) do
+ActiveRecord::Schema.define(version: 20161104120028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adwords", force: :cascade do |t|
+    t.integer  "top_ad_count"
+    t.integer  "bottom_ad_count"
+    t.integer  "total_ad_count"
+    t.integer  "no_ad_count"
+    t.integer  "total_link_count"
+    t.string   "total_search_result"
+    t.text     "html_code"
+    t.integer  "user_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.text     "url_top",             default: [],              array: true
+    t.text     "url_bottom",          default: [],              array: true
+    t.text     "url_no_ad",           default: [],              array: true
+  end
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false

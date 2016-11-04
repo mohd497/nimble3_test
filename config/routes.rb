@@ -8,9 +8,14 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      
-
+      get 'keywords' => 'keywords#google_search'
+      get 'report' => 'keywords#view_report'
     end
+  end
+
+  namespace :interface do
+    get 'home' => 'front_page#home'
+    get 'results' => 'front_page#result'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

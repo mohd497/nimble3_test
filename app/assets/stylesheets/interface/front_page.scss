@@ -1,0 +1,36 @@
+// Place all the styles related to the interface/front_page controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.custom-input{
+  width: 128px;
+}
+
+.custom-container{
+  padding-top: 8px;
+  margin-left: 563px;
+}
+
+.reg-container input[type=text], .reg-container input[type=password] {
+  width: 100%;
+  padding: 8px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.has-error{
+  border: 5px solid #CD5C5C;
+  box-sizing: border-box;
+}
+
+.reg-container button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+}
+
