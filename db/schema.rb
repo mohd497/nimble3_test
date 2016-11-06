@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104120028) do
+ActiveRecord::Schema.define(version: 20161105110931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20161104120028) do
     t.text     "url_top",             default: [],              array: true
     t.text     "url_bottom",          default: [],              array: true
     t.text     "url_no_ad",           default: [],              array: true
+    t.string   "keyword"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|

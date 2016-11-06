@@ -21,6 +21,8 @@
       <a class="navbar-brand" href="#">Nimbl3</a>
     </div>
 
+
+  <% if cookies[:authorization].nil? %>
     <div class="container col-lg-6 custom-container">
       <label>Email</label>
       <input id="login-email" type="text" placeholder="Enter Email" name="uname" required>
@@ -28,10 +30,18 @@
       <input id="login-password" type="password" placeholder="Enter Password" name="psw" required>
       <button id="login-send">Login</button>
     </div>
+  <% else %>
+    <div class="container logut-container">
+      <button id="logout-send">Logout</button>
+    </div>
+  <% end %>
   </div><!-- /.container-fluid -->
 </nav>
 
 <div class="alert alert-danger custom-alert">
+</div>
+
+<div class="alert alert-success">
 </div>
 
 <%= yield %>

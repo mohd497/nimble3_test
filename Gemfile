@@ -24,6 +24,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'sidekiq'
 
+
+gem 'smarter_csv'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
