@@ -25,8 +25,8 @@ default: &default
 development:
   <<: *default
   host: localhost
-  username: qwerty
-  password: 4977097
+  username: 
+  password:
   database: nimbl3_test_development
 
   # The specified database role being used to connect to postgres.
