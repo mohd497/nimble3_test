@@ -10,7 +10,7 @@ class SearchAndStore
   def perform(csv_values, current_resource_owner_id)
     for noun in csv_values
       file = open("https://www.google.com/search?q=#{noun}")
-      document = Nokogiri::HTML(@file)
+      document = Nokogiri::HTML(file)
 
       top_ad = document.css('#_Ltg')
       top_ad_count = top_ad.css('.ads-ad').count
@@ -28,14 +28,14 @@ class SearchAndStore
         bottom_ad_urls = bottom_ad.css('._WGk').map(&:inner_text).flatten
       end
 
-      non_ad = @document.css('#search')
-      non_ad_count = @non_ad.css('.g').count
+      non_ad = document.css('#search')
+      non_ad_count = non_ad.css('.g').count
 
-      non_ad_urls = @non_ad.css('.kv cite').map(&:inner_text).flatten
+      non_ad_urls = non_ad.css('.kv cite').map(&:inner_text).flatten
 
-      total_link_count = @document.css('a').count
+      total_link_count = document.css('a').count
 
-      result =  @document.css('#resultStats').first.text
+      result =  document.css('#resultStats').first.text
 
       user_id = current_resource_owner_id.to_i
 
@@ -45,7 +45,7 @@ class SearchAndStore
           keyword: noun,
           top_ad_count: top_ad_count,
           bottom_ad_count: bottom_ad_count,
-          total_ad_count: top_ad_count,
+          total_ad_count: total_ad_count,
           url_top: top_ad_urls,
           url_bottom: bottom_ad_urls,
           no_ad_count: non_ad_count,
