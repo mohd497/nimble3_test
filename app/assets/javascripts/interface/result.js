@@ -87,13 +87,13 @@ $(".results").ready(function(){
             contentType: false,
             success: function (response) {
                 success_banner.show();
-                success_banner.text("Uploaded Successfully");
+                success_banner.text(response.success);
                 
             },
             error: function (response) {
                 custom.show();
                 success_banner.hide();
-                custom.text(response.responseText);
+                custom.text(response.error);
 
             }
         });
