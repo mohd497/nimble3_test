@@ -20,12 +20,13 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-  host: localhost
-  username: qwerty
-  password: 4977097
+
 
 development:
   <<: *default
+  host: localhost
+  username: qwerty
+  password: 4977097
   database: nimbl3_test_development
 
   # The specified database role being used to connect to postgres.
@@ -82,7 +83,4 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: nimbl3_test_production
-  username: nimbl3_test
-  password: <%= ENV['NIMBL3_TEST_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
