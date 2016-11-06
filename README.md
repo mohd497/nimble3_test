@@ -8,9 +8,10 @@ This project will extract data from google search page having specific keywords.
 
 ### Gems 
 * rails 4.2.6
-* authentication: devise, doorkeeper
-* background process: sidekiq
-* view & assets: bootstrap-sass
+* devise 
+* doorkeeper
+* sidekiq
+* bootstrap-sass
 
 ### Setup guide
 * change in database.yml file to your local credentials
