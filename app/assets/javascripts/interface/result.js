@@ -1,6 +1,5 @@
 $(".results").ready(function(){
 
-
     $.ajax({
         url: "/api/v1/report",
         type: "get",
@@ -9,33 +8,9 @@ $(".results").ready(function(){
         success: function (response) {
             $.each(response, function( index, value ) {
 
-                var url_bottom_div = "<ul>";
-
-                $.each(value.url_bottom, function(b_index, b_value){
-                   url_bottom_div += "<li><a target='_blank' href=" + b_value + ">" + b_value + "</a></li>"
-                })
-
-                url_bottom_div += "</ul>";
-
-                var url_top_div = "<ul>";
-
-                $.each(value.url_top, function(t_index, t_value){
-                    url_top_div += "<li><a target='_blank' href=" + t_value + ">" + t_value + "</a></li>"
-                })
-
-                url_top_div += "</ul>";
-
-
-
-                var url_no_ad_div = "<ul>";
-
-                $.each(value.url_no_ad, function(t_index, t_value){
-                    url_no_ad_div += "<li><a target='_blank' href=" + t_value + ">" + t_value + "</a></li>"
-                })
-
-                url_no_ad_div += "</ul>";
-
-
+                var url_bottom_div = url_list(value.url_bottom);
+                var url_top_div = url_list(value.url_top);
+                var url_no_ad_div = url_list(value.url_no_ad);
                 $(".result-list").append(
                     $("<div>")
                         .append("<div><h2>" + value.keyword + "</h2></div>")
@@ -71,12 +46,26 @@ $(".results").ready(function(){
 
                 );
             });
-        },
-        error: function (response){
-
         }
     });
 
+
+    function url_list(value) {
+        var url_div = "<ul>";
+
+        $.each(value, function(b_index, b_value){
+            b_value = b_value.replace(/\/$/, '');
+
+            if(b_value.substr(0,7) != 'http://' && b_value.substr(0,8) != 'https://'){
+                b_value = 'http://' + b_value;
+            }
+
+            url_div += "<li><a target='_blank' href=" + b_value + ">" + b_value + "</a></li>"
+        })
+
+        url_div += "</ul>";
+        return url_div
+    }
 
     $('#file').on('change', function(){
 
