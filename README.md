@@ -1,5 +1,5 @@
 ## Nimbl3 Search
-This project will extract large amounts of data from the Google search results page and generate report.
+This project will extract data from google search page having specific keywords. Generate a report showing counts of various links and url of those links. 
 
 ### System dependencies
 * Ruby 2.3.1
