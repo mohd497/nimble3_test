@@ -4,7 +4,6 @@ class Interface::FrontPageController < ApplicationController
   end
 
   def result
-
   end
 
   def htmlrender

@@ -16,11 +16,11 @@ class Api::V1::KeywordsController < ApplicationController
       if not csv_values.empty?
        SearchAndStore.perform_async(csv_values, current_resource_owner.id)
       else
-        render json: { error: "Seems like CSV have no data in it" }, status: 400
+        render json: { error: I18n.t("error_empty")}, status: 400
       end
-      render json: { success: "Uploaded successfuly" }, status: 201
+      render json: { success: I18n.t("success_upload") }, status: 201
     else
-      render json: { error: "Something went wrong" }, status: 400
+      render json: { error: I18n.t("general_error") }, status: 400
     end
   end
 
@@ -32,12 +32,19 @@ class Api::V1::KeywordsController < ApplicationController
   def search_report
     keyword = params[:keyword]
     url = params[:url]
+    adwords = current_resource_owner.adwords
 
+    #TODO: Have better approach in this. Maybe use JSON instead of array?
+    adwords_array = build_adwords(adwords)
+    adwords_count = build_adwords_count(adwords_array, keyword, url)
+    render json: { count: adwords_count }, status: 200
+  end
+
+  private
+
+  def build_adwords(adwords)
     adwords_array = []
-    adwords_count = 0
-    adwards = Adword.all
-
-    adwards.each do |ad|
+    adwords.each do |ad|
 
       unless ad.url_top.nil?
         ad.url_top.each do |top|
@@ -52,23 +59,27 @@ class Api::V1::KeywordsController < ApplicationController
       end
 
     end
+    return adwords_array
+  end
 
+  def build_adwords_count(adwords_array, keyword, url)
+    adwords_count = 0
     unless keyword.empty?
       adwords_array.each do |link|
         if link.include? keyword
           adwords_count = adwords_count + 1
         end
       end
-    else
+    end
+
+    unless url.nil?
       adwords_array.each do |link|
         if link == url
           adwords_count = adwords_count + 1
         end
       end
     end
-
-    render json: { count: adwords_count }, status: 200
-
-
+    return adwords_count
   end
+
 end

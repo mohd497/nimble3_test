@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  success_upload: "Uploaded successfuly, Sidekiq will now process the data."
+  error_empty: "Seems like CSV have no data in it."
+  general_error: "Something went wrong."
