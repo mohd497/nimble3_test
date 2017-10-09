@@ -1,4 +1,4 @@
-## Nimbl3 Search
+## google Search
 This project will extract data from google search page having specific keywords. Generate a report showing counts of various links and url of those links. 
 
 ### System dependencies
